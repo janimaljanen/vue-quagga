@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga>
-    <div style="position: absolute;"> {{ code }} </div>
+  <div style="text-align: left;">
+    <div> {{ code }} </div>
+    <div><v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga></div>
   </div>
 </template>
 
@@ -21,7 +21,7 @@ export default {
         height: 480
       },
       detecteds: [],
-      code: ""
+      code: "placeholder"
     }
   },
   methods: {

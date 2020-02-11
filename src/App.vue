@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Quagga/>
+    <div v-if="!bShowScanner">
+      <button v-on:click="showScanner">show scanner</button>
+    </div>
+
+    <div v-if="bShowScanner">
+      <button v-on:click="hideScanner">hide scanner</button>
+      <Quagga/>
+    </div>
   </div>
 </template>
 
@@ -12,6 +18,19 @@ export default {
   name: 'App',
   components: {
     Quagga
+  },
+  data () {
+    return {
+      bShowScanner: false
+    }
+  },
+  methods: {
+    showScanner(){
+      this.bShowScanner = true;
+    },
+    hideScanner(){
+      this.bShowScanner = false;
+    }
   }
 }
 </script>
