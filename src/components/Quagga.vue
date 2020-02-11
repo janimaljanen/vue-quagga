@@ -2,9 +2,10 @@
   <div style="text-align: left;">
     <div> format: {{ format }} code: {{ code }} </div>
     <div class="popup-wrapper" v-if="popup">
-      <img src="../assets/pepsimax.jpg"/>
+      <img v-if="product = 'Pepsi MAX'" src="../assets/novelle.jpg"/>
+      <img v-else-if="product = 'NOVELLE PLUS MULTI B+C'" src="../assets/pepsimax.jpg"/>
       <div>
-        Löytyi tuote Pepsi MAX!
+        Löytyi tuote {{ product }}!
       </div>
       <button @click="hidePopup">Lisää ostoskoriin</button>
     </div>
@@ -30,7 +31,8 @@ export default {
       detecteds: [],
       code: "code_placeholder",
       format: "ean_placeholder",
-      popup: false
+      popup: false,
+      product: ""
     }
   },
   methods: {
@@ -40,6 +42,10 @@ export default {
       this.format = data.codeResult.format
       if (this.code === "6413600015550") {
         this.popup = true
+        this.product = "Pepsi MAX"
+      } else if (this.code === "6413600004301" || this.code === "6413600017523") { // 6413600017523
+        this.popup = true
+        this.product = "NOVELLE PLUS MULTI B+C"
       }
     },
     showPopup(){
