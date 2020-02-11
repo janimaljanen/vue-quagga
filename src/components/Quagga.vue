@@ -1,9 +1,9 @@
 <template>
   <div style="text-align: left;">
-    <div> format: {{ format }} code: {{ code }} </div>
+    <div> format: {{ format }} | code: {{ code }} </div>
     <div class="popup-wrapper" v-if="popup">
-      <img v-if="product = 'Pepsi MAX'" src="../assets/novelle.jpg"/>
-      <img v-else-if="product = 'NOVELLE PLUS MULTI B+C'" src="../assets/pepsimax.jpg"/>
+      <img v-if="product = 'Pepsi MAX'" src="../assets/pepsimax.jpg"/>
+      <img v-else-if="product = 'NOVELLE PLUS MULTI B+C'" src="../assets/novelle.jpg"/>
       <div>
         Löytyi tuote {{ product }}!
       </div>
