@@ -1,6 +1,13 @@
 <template>
   <div style="text-align: left;">
-    <div> {{ code }} </div>
+    <div> format: {{ format }} code: {{ code }} </div>
+    <div class="popup-wrapper" v-if="popup">
+      <img src="../assets/pepsimax.jpg"/>
+      <div>
+        Löytyi tuote Pepsi MAX!
+      </div>
+      <button @click="hidePopup">Lisää ostoskoriin</button>
+    </div>
     <div><v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga></div>
   </div>
 </template>
@@ -21,15 +28,42 @@ export default {
         height: 480
       },
       detecteds: [],
-      code: "placeholder"
+      code: "code_placeholder",
+      format: "ean_placeholder",
+      popup: false
     }
   },
   methods: {
     logIt (data) {
       console.log('detected', data)
       this.code = data.codeResult.code
+      this.format = data.codeResult.format
+      if (this.code === "6413600015550") {
+        this.popup = true
+      }
+    },
+    showPopup(){
+      this.popup = true;
+    },
+    hidePopup(){
+      this.popup = false;
     }
-
   }
 }
 </script>
+
+<style>
+.popup-wrapper {
+  position: absolute;
+  z-index: 999;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding-top: 100px;
+}
+img {
+  max-width: 250px;
+  height: auto;
+}
+</style>
