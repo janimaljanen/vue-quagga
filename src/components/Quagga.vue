@@ -41,11 +41,11 @@ export default {
       this.code = data.codeResult.code
       this.format = data.codeResult.format
       if (this.code === "6413600015550") {
-        this.popup = true
         this.product = "Pepsi MAX"
-      } else if (this.code === "6413600004301" || this.code === "6413600017523") { // 6413600017523
         this.popup = true
+      } else if (this.code === "6413600017523") {
         this.product = "NOVELLE PLUS MULTI B+C"
+        this.popup = true
       }
     },
     showPopup(){
