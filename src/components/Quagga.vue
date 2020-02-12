@@ -6,6 +6,7 @@
       <img v-if="product === 'NOVELLE PLUS MULTI B+C'" src="../assets/novelle.jpg"/>
       <img v-if="product === 'ED GREENFRUIT NO SUGAR'" src="../assets/ed_green.jpg"/>
       <img v-if="product === 'HARTWALL ORIGINAL LONG SHOT 15,5%'" src="../assets/long_shot.jpg"/>
+      <img v-if="product === 'Vichy Citronelle 0,5l'" src="../assets/vichy.jpg"/>
       <div>
         Löytyi tuote {{ product }}!
       </div>
@@ -57,6 +58,10 @@ export default {
           break;
         case "6413600195986":
           this.product = "HARTWALL ORIGINAL LONG SHOT 15,5%"
+          this.popup = true
+          break;
+        case "6413600017578":
+          this.product = "Vichy Citronelle 0,5l"
           this.popup = true
           break;
         default:
