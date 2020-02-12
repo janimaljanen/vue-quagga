@@ -4,6 +4,8 @@
     <div class="popup-wrapper" v-if="popup">
       <img v-if="product === 'Pepsi MAX'" src="../assets/pepsimax.jpg"/>
       <img v-if="product === 'NOVELLE PLUS MULTI B+C'" src="../assets/novelle.jpg"/>
+      <img v-if="product === 'ED GREENFRUIT NO SUGAR'" src="../assets/ed_green.jpg"/>
+      <img v-if="product === 'HARTWALL ORIGINAL LONG SHOT 15,5%'" src="../assets/long_shot.jpg"/>
       <div>
         Löytyi tuote {{ product }}!
       </div>
@@ -40,12 +42,25 @@ export default {
       console.log('detected', data)
       this.code = data.codeResult.code
       this.format = data.codeResult.format
-      if (this.code === "6413600015550") {
-        this.product = "Pepsi MAX"
-        this.popup = true
-      } else if (this.code === "6413600017523") {
-        this.product = "NOVELLE PLUS MULTI B+C"
-        this.popup = true
+      switch  (this.code) {
+        case "6413600015550":
+          this.product = "Pepsi MAX"
+          this.popup = true
+          break;
+        case "6413600017523":
+          this.product = "NOVELLE PLUS MULTI B+C"
+          this.popup = true
+          break;
+        case "6413600156864":
+          this.product = "ED GREENFRUIT NO SUGAR"
+          this.popup = true
+          break;
+        case "6413600195986":
+          this.product = "HARTWALL ORIGINAL LONG SHOT 15,5%"
+          this.popup = true
+          break;
+        default:
+          // code block
       }
     },
     showPopup(){
