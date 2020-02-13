@@ -2,15 +2,15 @@
   <div style="text-align: left;">
     <div> format: {{ format }} | code: {{ code }} </div>
     <div class="popup-wrapper" v-if="popup">
-      <img v-if="product === 'Pepsi MAX'" :src="imgSrc" />
-      <img v-if="product === 'NOVELLE PLUS MULTI B+C'" :src="imgSrc" />
-      <img v-if="product === 'ED GREENFRUIT NO SUGAR'" :src="imgSrc" />
-      <img v-if="product === 'HARTWALL ORIGINAL LONG SHOT 15,5%'" :src="imgSrc" />
-      <img v-if="product === 'Vichy Citronelle 0,5l'" :src="imgSrc" />
+      <img v-if="product === 'Pepsi MAX'" src="../assets/pepsimax.jpg"/>
+      <img v-if="product === 'NOVELLE PLUS MULTI B+C'" src="../assets/novelle.jpg"/>
+      <img v-if="product === 'ED GREENFRUIT NO SUGAR'" src="../assets/ed_green.jpg"/>
+      <img v-if="product === 'HARTWALL ORIGINAL LONG SHOT 15,5%'" src="../assets/long_shot.jpg"/>
+      <img v-if="product === 'Vichy Citronelle 0,5l'" src="../assets/vichy.jpg"/>
       <div>
-        Found product {{ product }}!
+        Löytyi tuote {{ product }}!
       </div>
-      <button @click="hidePopup">Add to cart / scan another product</button>
+      <button @click="hidePopup">Lisää ostoskoriin</button>
     </div>
     <div><v-quagga :onDetected="logIt" :readerSize="readerSize" :readerTypes="['ean_reader']"></v-quagga></div>
   </div>
@@ -35,8 +35,7 @@ export default {
       code: "code_placeholder",
       format: "ean_placeholder",
       popup: false,
-      product: "",
-      imgSrc: ""
+      product: ""
     }
   },
   methods: {
@@ -48,27 +47,22 @@ export default {
         case "6413600015550":
           this.product = "Pepsi MAX"
           this.popup = true
-          this.imgSrc = "../assets/pepsimax.jpg"
           break;
         case "6413600017523":
           this.product = "NOVELLE PLUS MULTI B+C"
           this.popup = true
-          this.imgSrc = "../assets/novelle.jpg"
           break;
         case "6413600156864":
           this.product = "ED GREENFRUIT NO SUGAR"
           this.popup = true
-          this.imgSrc = "../assets/ed_green.jpg"
           break;
         case "6413600195986":
           this.product = "HARTWALL ORIGINAL LONG SHOT 15,5%"
           this.popup = true
-          this.imgSrc = "../assets/long_shot.jpg"
           break;
         case "6413600017578":
           this.product = "Vichy Citronelle 0,5l"
           this.popup = true
-          this.imgSrc = "../assets/vichy.jpg"
           break;
         default:
           // code block
